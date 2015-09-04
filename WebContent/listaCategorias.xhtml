@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Lista de Categorias</title>
+</h:head>
+<h:body>
+
+	<div>
+		<h:form id="tabela">
+			<h:dataTable border="1" value="#{automovelMB.listaMarcas}"
+				var="marca">
+				<h:column>
+					<h:commandLink value="#{marca.nomeMarca}">
+						<f:ajax render="@form :dados" />
+						<f:setPropertyActionListener target="#{automovelMB.marca}"
+							value="#{marca}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</div>
+
+	<h2>Lista de Categorias</h2>
+	<h:form id="dados">
+		<fieldset>
+			<legend>Categorias</legend>
+
+			<h:panelGrid columns="2">
+				<h:outputLabel value="ID" for="id"
+					rendered="#{automovelMB.marca.id != null}" />
+				<h:inputText id="id" value="#{automovelMB.marca.id}"
+					rendered="#{automovelMB.marca.id != null}" readonly="true">
+					#{marca.nomeMarca}
+					</h:inputText>
+
+				<h:outputLabel value="Marca" for="marca"
+					rendered="#{automovelMB.marca.id != null}" />
+				<h:inputText id="Marca" value="#{automovelMB.marca.nomeMarca}"
+					rendered="#{automovelMB.marca.id != null}" readonly="true" />
+
+
+				<!-- 				<h:outputLabel value="Id: " for="id" -->
+				<!-- 					rendered="#{automovelMB.marca.nomeMarca != null}" /> -->
+				<!-- 				<h:inputText id="id" value="#{automovelMB.automovel.id}" -->
+				<!-- 					rendered="#{automovelMB.marca.nomeMarca != null}" readonly="true" /> -->
+
+				<!-- 				<h:outputLabel value="Observações " for="observacoes" -->
+				<!-- 					rendered="#{automovelMB.automovel.id != null}" /> -->
+				<!-- 				<h:inputText id="observacoes" -->
+				<!-- 					value="#{automovelMB.automovel.observacoes}" -->
+				<!-- 					rendered="#{automovelMB.automovel.id != null}" readonly="true" /> -->
+
+				<!-- 				<h:outputLabel value="Modelo " for="modelo" -->
+				<!-- 					rendered="#{automovelMB.automovel.id != null}" /> -->
+				<!-- 				<h:inputText id="modelo" value="#{automovelMB.automovel.modelo}" -->
+				<!-- 					rendered="#{automovelMB.automovel.id != null}" readonly="true" /> -->
+
+				<!-- 				<h:outputLabel value="Marca" for="marca" -->
+				<!-- 					rendered="#{automovelMB.marca.id != null}" /> -->
+				<!-- 				<h:inputText id="marca" -->
+				<!-- 					value="#{automovelMB.automovel.marca.nomeMarca}" -->
+				<!-- 					rendered="#{automovelMB.marca.id != null}" readonly="true" /> -->
+
+
+			</h:panelGrid>
+
+
+		</fieldset>
+	</h:form>
+
+
+</h:body>
+</html>
